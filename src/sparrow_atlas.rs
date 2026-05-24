@@ -1,5 +1,6 @@
 // src/sparrow_atlas.rs
 
+#[derive(Clone)]
 pub struct SparrowFrame {
     pub x: f32,
     pub y: f32,
