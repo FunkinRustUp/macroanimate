@@ -19,7 +19,7 @@ Add the dependency to your `Cargo.toml`:
 ```toml
 [dependencies]
 macroquad = "0.4.15"
-macroanimate = "0.1.0"
+macroanimate = "0.2.1"
 ```
 
 ## Quick Start
