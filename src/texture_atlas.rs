@@ -1,4 +1,4 @@
-// src/animate_atlas.rs
+// src/texture_atlas.rs
 use macroquad::models::{Mesh, Vertex, draw_mesh};
 use macroquad::prelude::{Texture2D, vec2, vec3, vec4};
 use std::collections::HashMap;
@@ -16,7 +16,7 @@ pub struct AnimateSprite {
     pub rotated: bool,
 }
 
-pub struct AnimateAtlas {
+pub struct TextureAtlas {
     pub sprites: HashMap<String, AnimateSprite>,
     pub symbols: HashMap<String, serde_json::Value>,
     pub animations: HashMap<String, (usize, usize, String, [f32; 6])>,
@@ -81,7 +81,7 @@ fn symbol_frame_count(sym: &serde_json::Value) -> usize {
         .max(1)
 }
 
-pub fn parse_animate_atlas(spritemap_json: &str, animation_json: &str) -> AnimateAtlas {
+pub fn parse_texture_atlas(spritemap_json: &str, animation_json: &str) -> TextureAtlas {
     let sm: serde_json::Value = serde_json::from_str(spritemap_json).unwrap();
     let an: serde_json::Value = serde_json::from_str(animation_json).unwrap();
 
@@ -161,7 +161,7 @@ pub fn parse_animate_atlas(spritemap_json: &str, animation_json: &str) -> Animat
         }
     }
 
-    AnimateAtlas {
+    TextureAtlas {
         sprites,
         symbols,
         animations,
@@ -172,7 +172,7 @@ pub fn parse_animate_atlas(spritemap_json: &str, animation_json: &str) -> Animat
     }
 }
 
-pub fn get_animate_parts(atlas: &AnimateAtlas, anim_name: &str, frame: usize) -> Vec<DrawPart> {
+pub fn get_texture_parts(atlas: &TextureAtlas, anim_name: &str, frame: usize) -> Vec<DrawPart> {
     let Some((_, dur, sym_name, sym_mx)) = atlas.animations.get(anim_name) else {
         return vec![];
     };

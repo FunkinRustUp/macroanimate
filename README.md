@@ -7,6 +7,7 @@
 Adobe Animate **sparrow** and **texture atlas** parser and renderer for Macroquad.
 
 ## Features
+
 - **Lightweight Sparrow Parser**: Streamlined layout parsing using raw string scanning instead of heavy crates.
 - **Hierarchical Rig Engine**: On the go evaluation of multi-layered nested asset transformations.
 - **Optimized Vertex Deforms**: Custom quad arrays mapped directly to Macroquad's low-level drawing APIs.
@@ -67,7 +68,7 @@ Because Adobe Animate texture atlases rely heavily on complex matrix transformat
 
 ```rs
 use macroquad::prelude::*;
-use macroanimate::{parse_animate_atlas, get_animate_parts, draw_part_mesh};
+use macroanimate::{parse_texture_atlas_atlas, get_texture_parts, draw_part_mesh};
 
 #[macroquad::main("Texture Atlas Demo")]
 async fn main() {
@@ -75,14 +76,14 @@ async fn main() {
     let spritemap = std::fs::read_to_string("assets/test/spritemap1.json").unwrap();
     let animation = std::fs::read_to_string("assets/test/Animation.json").unwrap();
 
-    let atlas = parse_animate_atlas(&spritemap, &animation);
+    let atlas = parse_texture_atlas(&spritemap, &animation);
     let mut frame_index = 0;
 
     loop {
         clear_background(BLACK);
 
         // Resolve matrix transformations for the current frame
-        let parts = get_animate_parts(&atlas, "idle", frame_index);
+        let parts = get_texture_parts(&atlas, "idle", frame_index);
 
         // Iterate and draw vertex meshes using the sheet metadata configurations
         for part in &parts {
@@ -105,7 +106,9 @@ async fn main() {
 ```
 
 ## License
+
 This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
 
 ## Additional Info
+
 MacroAnimate is mainly built for the FNF RustUp Engine, any features that will be supported will go through if the RustUp Engine needs any support for it.
