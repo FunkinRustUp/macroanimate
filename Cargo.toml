@@ -1,0 +1,13 @@
+[package]
+name = "macroanimate"
+version = "0.1.0"
+edition = "2021"
+description = "Adobe Animate sparrow and texture atlas parser and renderer for Macroquad."
+license-file = "LICENSE"
+readme = "README.md"
+repository = "https://github.com/FunkinRustUp/macroanimate/"
+
+[dependencies]
+macroquad = "0.4.15"
+serde = { version = "1.0.228", features = ["derive"] }
+serde_json = "1.0.150"
