@@ -68,7 +68,7 @@ Because Adobe Animate texture atlases rely heavily on complex matrix transformat
 
 ```rs
 use macroquad::prelude::*;
-use macroanimate::{parse_texture_atlas_atlas, get_texture_parts, draw_part_mesh};
+use macroanimate::{parse_texture_atlas, get_texture_parts, draw_part_mesh};
 
 #[macroquad::main("Texture Atlas Demo")]
 async fn main() {
